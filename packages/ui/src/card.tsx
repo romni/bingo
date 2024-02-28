@@ -47,7 +47,9 @@ const CardHeaderText = styled.h1.attrs<{ $headerColor: string, $fontSize: number
     color: props.$headerColor,
     fontSize: `${props.$fontSize.toString()}px`
   }
-}))``
+}))`
+    white-space: nowrap;
+`
 
 const GameCard = styled.ul.attrs<{ $backgroundColor: string, $borderColor: string }>
 (props => ({
