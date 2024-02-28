@@ -96,7 +96,7 @@ const Card: React.FC<CardProps> = ({gameCard, ...props}) => {
       <CardHeader>
         <h1 className={rockSalt.className}>Goommunity Bingo</h1>
         <div>
-          <img src="/cloud.png" alt=""/>
+          <img src="/goombingo/cloud.png" alt=""/>
         </div>
       </CardHeader>
       <GameCard $backgroundColor={backgroundColor} $borderColor={borderColor}>
