@@ -1,5 +1,7 @@
+"use client"
+
 import styles from "./page.module.css";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Card from "@repo/ui/card";
 
 const shuffleArray = (array: number[]) => {
@@ -8,12 +10,12 @@ const shuffleArray = (array: number[]) => {
     .map(({value}) => value)
 }
 
-const Page: React.FC = () => {
+const getGameCard = () => {
   const gameArray = Array.from({length: 99}, (_, i) => i + 1)
   const randomArray = shuffleArray(gameArray)
   const gameCard = randomArray.slice(0, 25)
 
-  const gameCardByChunk = gameCard.reduce((accumulator: number[][], value: number, index: number) => {
+  return gameCard.reduce((accumulator: number[][], value: number, index: number) => {
     const chunkIndex = Math.floor(index / 5)
 
     if (!accumulator[chunkIndex]) {
@@ -24,11 +26,20 @@ const Page: React.FC = () => {
 
     return accumulator
   }, [])
+}
 
 
+const Page: React.FC = () => {
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
   return (
     <main className={styles.main}>
-      <Card gameCard={gameCardByChunk}/>
+      {
+        isClient && <Card gameCard={getGameCard()}/>
+      }
     </main>
   );
 }
