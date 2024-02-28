@@ -1,10 +1,13 @@
 "use client"
 
-import React, {useState} from "react";
+import React from "react";
 import {HexColorPicker} from "react-colorful";
 import {styled} from "styled-components";
 
 const ColorControlWrapper = styled.div`
+    display: flex;
+    gap: 16px;
+
     h2 {
         font-size: 16px;
         margin: 32px 0 8px 0;
@@ -16,6 +19,8 @@ type DesignControlsProps = {
   backgroundColorHandler: (color: string) => void
   fontColor: string
   fontColorHandler: (color: string) => void
+  headerColor: string
+  headerColorHandler: (color: string) => void
   borderColor: string
   borderColorHandler: (color: string) => void
 
@@ -29,6 +34,8 @@ const DesignControls: React.FC<DesignControlsProps> = (
     borderColorHandler,
     fontColor,
     fontColorHandler,
+    headerColor,
+    headerColorHandler,
     ...props
   }) => {
 
@@ -45,6 +52,13 @@ const DesignControls: React.FC<DesignControlsProps> = (
       <HexColorPicker
         color={borderColor}
         onChange={(event) => borderColorHandler(event)}
+      />
+    </div>
+    <div>
+      <h2>Change header color</h2>
+      <HexColorPicker
+        color={headerColor}
+        onChange={(event) => headerColorHandler(event)}
       />
     </div>
     <div>
