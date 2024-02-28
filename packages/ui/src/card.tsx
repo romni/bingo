@@ -16,6 +16,7 @@ const CardWrapper = styled.div.attrs<{ $fontColor: string }>
     color: props.$fontColor
   }}))`
     min-height: 600px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
