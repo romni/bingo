@@ -25,14 +25,15 @@ const CardWrapper = styled.div.attrs<{ $fontColor: string }>
 
 const CardHeader = styled.div`
     position: relative;
-    width: 600px;
+    width: 500px;
     display: flex;
     justify-content: center;
     
     div {
+        width: 90%;
         position: absolute;
-        bottom: -200px;
-        z-index: -1;
+        bottom: -408px;
+        z-index: 1;
 
         img {
             opacity: 0.3;
@@ -127,9 +128,11 @@ const Card: React.FC<CardProps> = ({gameCard, ...props}) => {
           $headerColor={headerColor}
           $fontSize={headerSize}
           className={headerFont}
-        >Goommunity Bingo</CardHeaderText>
+        >
+          Goommunity Bingo
+        </CardHeaderText>
         <div>
-          <img src="/goombingo/cloud.png" alt=""/>
+          <img src="/goombingo/gomilurk.png" alt=""/>
         </div>
       </CardHeader>
       <GameCard $backgroundColor={backgroundColor} $borderColor={borderColor}>
