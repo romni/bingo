@@ -96,8 +96,14 @@ const GameCardItem = styled.div.attrs<{ $borderColor: string }>
 `
 const ControlWrapper = styled.div`
     display: flex;
-    gap: 16px;
+    gap: 64px;
     align-items: flex-end;
+    & > div:first-of-type {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+    }
     & > div:first-of-type > span:nth-child(3){
         display: block;
         margin-top: 16px;
@@ -170,6 +176,12 @@ const Card: React.FC<CardProps> = ({gameCard, ...props}) => {
           min={20}
           onChange={(event, value) => setHeaderSize((Array.isArray(value) ? value[0] : value) ?? 40)}
         />
+        <Button onClick={takeScreenshot}>Take screenshot</Button>
+        {
+          screenshotDataUrl && <a href={screenshotDataUrl} download="screenshot.png">
+            <Button>Download screenshot</Button>
+          </a>
+        }
       </div>
       <DesignControls
         backgroundColor={backgroundColor}
@@ -181,12 +193,7 @@ const Card: React.FC<CardProps> = ({gameCard, ...props}) => {
         headerColor={headerColor}
         headerColorHandler={(color) => setHeaderColor(color)}
       />
-      <Button onClick={takeScreenshot}>Take screenshot</Button>
-      {
-        screenshotDataUrl && <a href={screenshotDataUrl} download="screenshot.png">
-          <Button>Download screenshot</Button>
-        </a>
-      }
+
     </ControlWrapper>
   </>
 }

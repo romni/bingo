@@ -6,11 +6,21 @@ import {styled} from "styled-components";
 
 const ColorControlWrapper = styled.div`
     display: flex;
-    gap: 16px;
-
+    gap: 32px;
+    height: 100%;
     h2 {
-        font-size: 16px;
+        font-size: 12px;
         margin: 32px 0 8px 0;
+    }
+    & > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .react-colorful {
+        height: 100px;
+        width: 100px;
     }
 `
 
@@ -41,28 +51,28 @@ const DesignControls: React.FC<DesignControlsProps> = (
 
   return <ColorControlWrapper {...props}>
     <div>
-      <h2>Change background color</h2>
+      <h2>Background color</h2>
       <HexColorPicker
         color={backgroundColor}
         onChange={backgroundColorHandler}
       />
     </div>
     <div>
-      <h2>Change border color</h2>
+      <h2>Border color</h2>
       <HexColorPicker
         color={borderColor}
         onChange={(event) => borderColorHandler(event)}
       />
     </div>
     <div>
-      <h2>Change header color</h2>
+      <h2>Header color</h2>
       <HexColorPicker
         color={headerColor}
         onChange={(event) => headerColorHandler(event)}
       />
     </div>
     <div>
-      <h2>Change font color</h2>
+      <h2>Font color</h2>
       <HexColorPicker
         color={fontColor}
         onChange={(event) => fontColorHandler(event)}
