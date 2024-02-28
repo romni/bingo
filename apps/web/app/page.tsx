@@ -1,3 +1,5 @@
+"use client"
+
 import styles from "./page.module.css";
 import React from "react";
 import Card from "@repo/ui/card";
