@@ -61,5 +61,5 @@
     justify-content: center;
     font-size: 69px;
     width: 100px;
-
+    white-space: nowrap;
 }
