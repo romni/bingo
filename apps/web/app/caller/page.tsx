@@ -49,8 +49,15 @@ const Page: React.FC = () => {
   }
 
   return <main className={styles.main}>
-    <h1 className={rockSalt.className}>Goommunity Bingo</h1>
+    <h1 className={rockSalt.className}>Goommunity Bingomi</h1>
     <div className={styles.callerWrapper}>
+      <div className={styles.resultWrapper}>
+        <h2>
+          {selectedNumber !== undefined && selectedNumber}
+          {selectedNumber === 69 && ' Nice!'}
+        </h2>
+        <Button disabled={isRolling} onClick={handleRoll}>Roll</Button>
+      </div>
       <div className={styles.boardWrapper}>
         {
           gameArray.map(item =>
@@ -73,13 +80,6 @@ const Page: React.FC = () => {
               {item}
             </div>)
         }
-      </div>
-      <div className={styles.resultWrapper}>
-        <h2>
-          {selectedNumber !== undefined && selectedNumber}
-          {selectedNumber === 69 && ' Nice!'}
-        </h2>
-        <Button disabled={isRolling} onClick={handleRoll}>Roll</Button>
       </div>
     </div>
   </main>

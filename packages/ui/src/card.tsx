@@ -135,7 +135,7 @@ const Card: React.FC<CardProps> = ({gameCard, ...props}) => {
           $fontSize={headerSize}
           className={headerFont}
         >
-          Goommunity Bingo
+          Goommunity Bingomi
         </CardHeaderText>
       </CardHeader>
       <GameCard $backgroundColor={backgroundColor} $borderColor={borderColor}>
