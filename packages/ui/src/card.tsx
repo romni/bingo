@@ -16,7 +16,6 @@ const CardWrapper = styled.div.attrs<{ $fontColor: string }>
     color: props.$fontColor
   }}))`
     min-height: 600px;
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,20 +25,8 @@ const CardWrapper = styled.div.attrs<{ $fontColor: string }>
 
 const CardHeader = styled.div`
     position: relative;
-    width: 500px;
     display: flex;
     justify-content: center;
-    
-    div {
-        width: 90%;
-        position: absolute;
-        bottom: -408px;
-        z-index: 1;
-
-        img {
-            opacity: 0.3;
-        }
-    }
 `
 
 const CardHeaderText = styled.h1.attrs<{ $headerColor: string, $fontSize: number }>
@@ -56,7 +43,7 @@ const GameCard = styled.ul.attrs<{ $backgroundColor: string, $borderColor: strin
 (props => ({
   style: {
     borderColor: props.$borderColor,
-    background: props.$backgroundColor
+    backgroundColor: props.$backgroundColor
   }
 }))`
     width: 400px;
@@ -64,6 +51,10 @@ const GameCard = styled.ul.attrs<{ $backgroundColor: string, $borderColor: strin
     display: flex;
     flex-direction: column;
     border: 1px solid;
+    background-image: url("/goombingo/gomilurk.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
 `
 
 const GameCardRow = styled.li.attrs<{ $borderColor: string }>
@@ -98,6 +89,12 @@ const ControlWrapper = styled.div`
     display: flex;
     gap: 64px;
     align-items: flex-end;
+    flex-wrap: wrap;
+
+    @media screen and (max-width: 600px) {
+        justify-content: center;
+        gap: 16px;
+    }
     & > div:first-of-type {
         display: flex;
         flex-direction: column;
@@ -140,9 +137,6 @@ const Card: React.FC<CardProps> = ({gameCard, ...props}) => {
         >
           Goommunity Bingo
         </CardHeaderText>
-        <div>
-          <img src="/goombingo/gomilurk.png" alt=""/>
-        </div>
       </CardHeader>
       <GameCard $backgroundColor={backgroundColor} $borderColor={borderColor}>
         {

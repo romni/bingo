@@ -6,8 +6,16 @@ import {styled} from "styled-components";
 
 const ColorControlWrapper = styled.div`
     display: flex;
+    flex-wrap: wrap;
     gap: 32px;
     height: 100%;
+
+    @media screen and (max-width: 600px) {
+        padding: 16px;
+        height: auto;
+        justify-content: center;
+    }
+    
     h2 {
         font-size: 12px;
         margin: 32px 0 8px 0;
