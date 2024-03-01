@@ -1,14 +1,26 @@
 .main {
+    position: relative;
     height: 100%;
     padding: 32px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 64px;
+    background: black url("/goombingo/gomioldge.png") no-repeat right bottom;
 }
 
 .main h1 {
     font-size: 69px;
+    color: #fafafa;
+}
+
+.sayings {
+    position: absolute;
+    bottom: 100px;
+    right: 300px;
+    color: white;
+    background: rgba(0, 0, 0, 0.84);
+    padding: 16px;
 }
 .callerWrapper {
     display: flex;
@@ -22,7 +34,11 @@
     grid-template-columns: repeat(10, 60px);
     justify-items: center;
     gap: 8px;
-    border: 1px solid #d5d5d5;
+    color: white;
+    border: 1px solid rgba(100, 100, 100, 0.5);
+    background: rgba(0, 0, 0, 0.84);
+    border-radius: 8px;
+    padding: 16px;
 }
 
 .boardItem {
@@ -36,13 +52,14 @@
 }
 
 .selectedItem {
-    background: black;
-    color: white;
+    background: #e8e8e8;
+    color: #0a0a0a;
+    border-radius: 4px;
 }
 
 .rolledItem {
     background: red;
-    color: white;
+    border-radius: 50%;
 }
 
 .resultWrapper {
@@ -53,6 +70,7 @@
     align-items: center;
     justify-content: center;
     gap: 32px;
+    color: #e8e8e8;
 }
 
 .resultWrapper h2 {
