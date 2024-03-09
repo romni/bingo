@@ -7,6 +7,7 @@
     align-items: center;
     gap: 64px;
     background: black url("/goombingo/gomioldge.png") no-repeat right bottom;
+    background-size: 20%;
 }
 
 .main h1 {
