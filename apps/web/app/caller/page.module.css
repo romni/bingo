@@ -6,8 +6,7 @@
     flex-direction: column;
     align-items: center;
     gap: 64px;
-    background: black url("/goombingo/gomioldge.png") no-repeat right bottom;
-    background-size: 20%;
+    background: black;
 }
 
 .main h1 {
@@ -23,6 +22,7 @@
     background: rgba(0, 0, 0, 0.84);
     padding: 16px;
 }
+
 .callerWrapper {
     display: flex;
     align-items: center;
