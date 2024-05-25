@@ -51,10 +51,6 @@ const GameCard = styled.ul.attrs<{ $backgroundColor: string, $borderColor: strin
     display: flex;
     flex-direction: column;
     border: 1px solid;
-    background-image: url("/goombingo/gomilurk.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: bottom;
 `
 
 const GameCardRow = styled.li.attrs<{ $borderColor: string }>
@@ -135,7 +131,7 @@ const Card: React.FC<CardProps> = ({gameCard, ...props}) => {
           $fontSize={headerSize}
           className={headerFont}
         >
-          Goommunity Bingomi
+          Bingo
         </CardHeaderText>
       </CardHeader>
       <GameCard $backgroundColor={backgroundColor} $borderColor={borderColor}>
