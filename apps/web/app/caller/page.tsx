@@ -11,14 +11,13 @@ const getWinningNumber = (gameArray: string[]): { winningNumber: string, newGame
   const selectedIndex = selectRandomItem(gameArray)
 
   return {
-    winningNumber: gameArray[selectedIndex] ?? 0,
+    winningNumber: gameArray[selectedIndex] ?? "",
     newGameArray: gameArray.filter((_, index) => index !== selectedIndex)
   }
 }
 
 const Page: React.FC = () => {
   const gameArray: string[] = values.data
-  console.log(values)
   const [remainingItems, setRemainingItems] = useState(gameArray)
   const [selectedItem, setSelectedItem] = useState<string | null>(null)
   const rollInterval = useRef<NodeJS.Timeout | null>(null)
@@ -32,7 +31,7 @@ const Page: React.FC = () => {
 
       rollInterval.current = setInterval(() => {
         const randomIndex = selectRandomItem(remainingItems)
-        setSelectedItem(remainingItems[randomIndex] ?? 0)
+        setSelectedItem(remainingItems[randomIndex] ?? "")
       }, 200)
 
       setTimeout(() => {
