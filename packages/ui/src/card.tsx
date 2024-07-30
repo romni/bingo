@@ -9,12 +9,12 @@ import Button from "./button";
 import {Option, Select, Slider} from "@mui/joy";
 
 
-
 const CardWrapper = styled.div.attrs<{ $fontColor: string }>
 (props => ({
-  style: {
-    color: props.$fontColor
-  }}))`
+    style: {
+        color: props.$fontColor
+    }
+}))`
     min-height: 600px;
     display: flex;
     flex-direction: column;
@@ -31,20 +31,20 @@ const CardHeader = styled.div`
 
 const CardHeaderText = styled.h1.attrs<{ $headerColor: string, $fontSize: number }>
 (props => ({
-  style: {
-    color: props.$headerColor,
-    fontSize: `${props.$fontSize.toString()}px`
-  }
+    style: {
+        color: props.$headerColor,
+        fontSize: `${props.$fontSize.toString()}px`
+    }
 }))`
     white-space: nowrap;
 `
 
 const GameCard = styled.ul.attrs<{ $backgroundColor: string, $borderColor: string }>
 (props => ({
-  style: {
-    borderColor: props.$borderColor,
-    backgroundColor: props.$backgroundColor
-  }
+    style: {
+        borderColor: props.$borderColor,
+        backgroundColor: props.$backgroundColor
+    }
 }))`
     width: 400px;
     font-size: 30px;
@@ -55,9 +55,9 @@ const GameCard = styled.ul.attrs<{ $backgroundColor: string, $borderColor: strin
 
 const GameCardRow = styled.li.attrs<{ $borderColor: string }>
 (props => ({
-  style: {
-    borderColor: props.$borderColor,
-  }
+    style: {
+        borderColor: props.$borderColor,
+    }
 }))`
     display: grid;
     grid-template-columns: repeat(5, 80px);
@@ -70,9 +70,9 @@ const GameCardRow = styled.li.attrs<{ $borderColor: string }>
 
 const GameCardItem = styled.div.attrs<{ $borderColor: string }>
 (props => ({
-  style: {
-    borderColor: props.$borderColor,
-  }
+    style: {
+        borderColor: props.$borderColor,
+    }
 }))`
     display: flex;
     height: 80px;
@@ -104,88 +104,88 @@ const ControlWrapper = styled.div`
 `
 
 type CardProps = {
-  gameCard: number[][]
+    gameCard: number[][]
 } & React.ComponentPropsWithoutRef<'div'>
 
 const Card: React.FC<CardProps> = ({gameCard, ...props}) => {
-  const [backgroundColor, setBackgroundColor] = useState('#ffffff')
-  const [fontColor, setFontColor] = useState('#000000')
-  const [headerColor, setHeaderColor] = useState('#000000')
-  const [borderColor, setBorderColor] = useState('#000000')
-  const [screenshotDataUrl, setScreenshotDataUrl] = useState<string | null>(null)
-  const [headerFont, setHeaderFont] = useState<string>(rockSalt.className)
-  const [headerSize, setHeaderSize] = useState(40)
-  const divRef = useRef<HTMLDivElement>(null)
+    const [backgroundColor, setBackgroundColor] = useState('#ffffff')
+    const [fontColor, setFontColor] = useState('#000000')
+    const [headerColor, setHeaderColor] = useState('#000000')
+    const [borderColor, setBorderColor] = useState('#000000')
+    const [screenshotDataUrl, setScreenshotDataUrl] = useState<string | null>(null)
+    const [headerFont, setHeaderFont] = useState<string>(rockSalt.className)
+    const [headerSize, setHeaderSize] = useState(40)
+    const divRef = useRef<HTMLDivElement>(null)
 
-  const takeScreenshot = () => {
-    if (divRef.current) {
-      html2canvas(divRef.current).then(canvas =>
-        setScreenshotDataUrl(canvas.toDataURL('image/png')))
+    const takeScreenshot = () => {
+        if (divRef.current) {
+            html2canvas(divRef.current).then(canvas =>
+                setScreenshotDataUrl(canvas.toDataURL('image/png')))
+        }
     }
-  }
-  return <>
-    <CardWrapper $fontColor={fontColor} {...props} ref={divRef}>
-      <CardHeader>
-        <CardHeaderText
-          $headerColor={headerColor}
-          $fontSize={headerSize}
-          className={headerFont}
-        >
-          Bingo
-        </CardHeaderText>
-      </CardHeader>
-      <GameCard $backgroundColor={backgroundColor} $borderColor={borderColor}>
-        {
-          gameCard.map((row, index) =>
-            <GameCardRow $borderColor={borderColor} key={index + 'row'}>
-              {
-                row.map((item) =>
-                  <GameCardItem $borderColor={borderColor} key={item + 'item'}>{item}</GameCardItem>)
-              }
-            </GameCardRow>
-          )
-        }
-      </GameCard>
+    return <>
+        <CardWrapper $fontColor={fontColor} {...props} ref={divRef}>
+            <CardHeader>
+                <CardHeaderText
+                    $headerColor={headerColor}
+                    $fontSize={headerSize}
+                    className={headerFont}
+                >
+                    Bingo
+                </CardHeaderText>
+            </CardHeader>
+            <GameCard $backgroundColor={backgroundColor} $borderColor={borderColor}>
+                {
+                    gameCard.map((row, index) =>
+                        <GameCardRow $borderColor={borderColor} key={index + 'row'}>
+                            {
+                                row.map((item) =>
+                                    <GameCardItem $borderColor={borderColor} key={item + 'item'}>{item}</GameCardItem>)
+                            }
+                        </GameCardRow>
+                    )
+                }
+            </GameCard>
 
-    </CardWrapper>
-    <ControlWrapper>
-      <div>
-        <span>Select header font</span>
-        <Select
-          defaultValue={rockSalt.className}
-          onChange={((_, value: string | null) => setHeaderFont(value ?? ''))}
-        >
-          <Option value={rockSalt.className}>Rock salt</Option>
-          <Option value={caveat.className}>Caveat</Option>
-          <Option value={indieFlower.className}>Indie flower</Option>
-        </Select>
-        <span>Change font size</span>
-        <Slider
-          defaultValue={40}
-          max={80}
-          min={20}
-          onChange={(event, value) => setHeaderSize((Array.isArray(value) ? value[0] : value) ?? 40)}
-        />
-        <Button onClick={takeScreenshot}>Take screenshot</Button>
-        {
-          screenshotDataUrl && <a href={screenshotDataUrl} download="screenshot.png">
-            <Button>Download screenshot</Button>
-          </a>
-        }
-      </div>
-      <DesignControls
-        backgroundColor={backgroundColor}
-        backgroundColorHandler={(color) => setBackgroundColor(color)}
-        borderColor={borderColor}
-        borderColorHandler={(color) => setBorderColor(color)}
-        fontColor={fontColor}
-        fontColorHandler={(color) => setFontColor(color)}
-        headerColor={headerColor}
-        headerColorHandler={(color) => setHeaderColor(color)}
-      />
+        </CardWrapper>
+        <ControlWrapper>
+            <div>
+                <span>Select header font</span>
+                <Select
+                    defaultValue={rockSalt.className}
+                    onChange={((_, value: string | null) => setHeaderFont(value ?? ''))}
+                >
+                    <Option value={rockSalt.className}>Rock salt</Option>
+                    <Option value={caveat.className}>Caveat</Option>
+                    <Option value={indieFlower.className}>Indie flower</Option>
+                </Select>
+                <span>Change font size</span>
+                <Slider
+                    defaultValue={40}
+                    max={80}
+                    min={20}
+                    onChange={(event, value) => setHeaderSize((Array.isArray(value) ? value[0] : value) ?? 40)}
+                />
+                <Button onClick={takeScreenshot}>Take screenshot</Button>
+                {
+                    screenshotDataUrl && <a href={screenshotDataUrl} download="screenshot.png">
+                        <Button>Download screenshot</Button>
+                    </a>
+                }
+            </div>
+            <DesignControls
+                backgroundColor={backgroundColor}
+                backgroundColorHandler={(color) => setBackgroundColor(color)}
+                borderColor={borderColor}
+                borderColorHandler={(color) => setBorderColor(color)}
+                fontColor={fontColor}
+                fontColorHandler={(color) => setFontColor(color)}
+                headerColor={headerColor}
+                headerColorHandler={(color) => setHeaderColor(color)}
+            />
 
-    </ControlWrapper>
-  </>
+        </ControlWrapper>
+    </>
 }
 
 export default Card
