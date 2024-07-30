@@ -26,13 +26,12 @@
 .callerWrapper {
     display: flex;
     align-items: center;
-    max-width: 900px;
     gap: 128px;
 }
 
 .boardWrapper {
     display: grid;
-    grid-template-columns: repeat(10, 60px);
+    grid-template-columns: repeat(8, 100px);
     justify-items: center;
     gap: 8px;
     color: white;
@@ -46,8 +45,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 25px;
-    width: 25px;
+    text-align: center;
+    height: 100px;
+    width: 100px;
     padding: 20px;
     cursor: pointer;
 }
@@ -78,7 +78,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     font-size: 69px;
-    width: 100px;
-    white-space: nowrap;
+    width: 400px;
+    /*white-space: nowrap;*/
 }

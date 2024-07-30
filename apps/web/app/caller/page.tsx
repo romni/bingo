@@ -3,10 +3,11 @@ import React, {useRef, useState} from "react";
 import styles from "./page.module.css";
 import {rockSalt} from "web/fonts/googlefonts";
 import Button from "@repo/ui/button";
+import * as values from '../../values.json'
 
 const selectRandomItem = (gameArray: any[]) => Math.floor((Math.random() * gameArray.length))
 
-const getWinningNumber = (gameArray: number[]): { winningNumber: number, newGameArray: number[] } => {
+const getWinningNumber = (gameArray: string[]): { winningNumber: string, newGameArray: string[] } => {
   const selectedIndex = selectRandomItem(gameArray)
 
   return {
@@ -16,12 +17,13 @@ const getWinningNumber = (gameArray: number[]): { winningNumber: number, newGame
 }
 
 const Page: React.FC = () => {
-  const gameArray = Array.from({length: 99}, (_, i) => i + 1)
+  const gameArray: string[] = values.data
+  console.log(values)
   const [remainingItems, setRemainingItems] = useState(gameArray)
-  const [selectedItem, setSelectedItem] = useState<number | null>(null)
+  const [selectedItem, setSelectedItem] = useState<string | null>(null)
   const rollInterval = useRef<NodeJS.Timeout | null>(null)
   const [isRolling, setIsRolling] = useState(false)
-  const [selectedNumber, setSelectedNumber] = useState<number>()
+  const [selectedNumber, setSelectedNumber] = useState<string>()
 
   const handleRoll = () => {
     if (!isRolling) {
@@ -52,7 +54,7 @@ const Page: React.FC = () => {
       <div className={styles.resultWrapper}>
         <h2>
           {selectedNumber !== undefined && selectedNumber}
-          {selectedNumber === 69 && ' Nice!'}
+          {/*{selectedNumber === 69 && ' Nice!'}*/}
         </h2>
         <Button
           disabled={isRolling}
