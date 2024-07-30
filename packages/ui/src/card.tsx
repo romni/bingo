@@ -47,7 +47,7 @@ const GameCard = styled.ul.attrs<{ $backgroundColor: string, $borderColor: strin
     }
 }))`
     width: 400px;
-    font-size: 30px;
+    font-size: 16px;
     display: flex;
     flex-direction: column;
     border: 1px solid;
@@ -60,7 +60,7 @@ const GameCardRow = styled.li.attrs<{ $borderColor: string }>
     }
 }))`
     display: grid;
-    grid-template-columns: repeat(5, 80px);
+    grid-template-columns: repeat(4, 100px);
     border-bottom: 1px solid ${props => props.$borderColor};
 
     &:last-child, div:last-child {
@@ -75,9 +75,10 @@ const GameCardItem = styled.div.attrs<{ $borderColor: string }>
     }
 }))`
     display: flex;
-    height: 80px;
-    width: 80px;
+    height: 100px;
+    width: 100px;
     align-items: center;
+    text-align: center;
     justify-content: center;
     border-right: 1px solid ${props => props.$borderColor};
 `
@@ -104,7 +105,7 @@ const ControlWrapper = styled.div`
 `
 
 type CardProps = {
-    gameCard: number[][]
+    gameCard: string[][]
 } & React.ComponentPropsWithoutRef<'div'>
 
 const Card: React.FC<CardProps> = ({gameCard, ...props}) => {
